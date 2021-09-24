@@ -29,7 +29,7 @@ const Register = (props) => {
 
     // Redirect if login
     if(props.isAuthenticated) {
-      return <Redirect to="/dhasboard" />
+      return <Redirect to="/dashboard" />
     }    
 
     return <Fragment>
