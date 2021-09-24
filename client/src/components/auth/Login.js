@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { login } from '../../actions/auth';
@@ -18,6 +18,11 @@ const Login = (props) => {
     const onSubmit = e => {
         e.preventDefault();
         props.login(email, password);
+    }
+
+    // Redirect if login
+    if(props.isAuthenticated) {
+      return <Redirect to="/dhasboard" />
     }
 
     return <Fragment>
@@ -58,6 +63,11 @@ const Login = (props) => {
 Login.propTypes = {
   setAlert: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { setAlert, login })(Login);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, login })(Login);
