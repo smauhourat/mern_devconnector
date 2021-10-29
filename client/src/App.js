@@ -25,6 +25,8 @@ const App = () => {
     store.dispatch(loadUser());
   }, []);
 
+  // con el parametro arreglo vacio se comporta como el ComponentDidMount, corre una sola vez
+
   return (
   <Provider store={store}>
     <Router>
