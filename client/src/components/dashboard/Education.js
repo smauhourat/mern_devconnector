@@ -3,10 +3,11 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
+import { deleteEducation } from '../../actions/profile';
 
-const Education = ({ education }) => {
+const Education = ({ education, deleteEducation }) => {
     const educations = education.map(e => (
-        <tr>
+        <tr key={e._id}>
             <td>{e.school}</td>
             <td className="hide-sm">{e.degree}</td>
             <td className="hide-sm">
@@ -15,7 +16,7 @@ const Education = ({ education }) => {
             } 
             </td>
             <td>
-                <button className="btn btn-danger">
+                <button className="btn btn-danger" onClick={(e) => deleteEducation(e._id)} >
                 Delete
                 </button>
             </td>
@@ -45,6 +46,7 @@ const Education = ({ education }) => {
 
 Education.propTypes = {
     education: PropTypes.array.isRequired,
+    deleteEducation: PropTypes.func.isRequired
 }
 
-export default connect(null, null)(withRouter(Education));
+export default connect(null, { deleteEducation })(withRouter(Education));
