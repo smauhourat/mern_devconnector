@@ -21,11 +21,11 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
             { profile === null || loading ? <Spinner/> : <Fragment>
                 <Link to="/profiles" className="btn btn-light">Back to Profiles</Link>
                 <div className="profile-grid my-1">
-                    <ProfileTop />
-                    <ProfileAbout />
-                    <ProfileExperience />
-                    <ProfileEducation />
-                    <ProfileGithub />
+                    <ProfileTop profile={profile} />
+                    <ProfileAbout profile={profile} />
+                    <ProfileExperience experience={profile.experience} />
+                    <ProfileEducation education={profile.education} />
+                    <ProfileGithub username={profile.githubusername}/>
                     {
                         auth.isAuthenticated &&
                         auth.loading === false &&

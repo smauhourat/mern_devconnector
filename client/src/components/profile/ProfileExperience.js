@@ -1,33 +1,30 @@
 import React, { Fragment } from 'react'
+import Moment from 'react-moment'
 import PropTypes from 'prop-types'
 
-const ProfileExperience = props => {
+const ProfileExperience = ({ 
+        experience
+    }) => {
     return (
         <Fragment>
             <div className="profile-exp bg-white p-2">
             <h2 className="text-primary">Experience</h2>
-            <div>
-                <h3 className="text-dark">Microsoft</h3>
-                <p>Oct 2011 - Current</p>
-                <p><strong>Position: </strong>Senior Developer</p>
-                <p>
-                <strong>Description: </strong>Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Dignissimos placeat, dolorum ullam
-                ipsam, sapiente suscipit dicta eius velit amet aspernatur
-                asperiores modi quidem expedita fugit.
-                </p>
-            </div>
-            <div>
-                <h3 className="text-dark">Sun Microsystems</h3>
-                <p>Nov 2004 - Nov 2011</p>
-                <p><strong>Position: </strong>Systems Admin</p>
-                <p>
-                <strong>Description: </strong>Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Dignissimos placeat, dolorum ullam
-                ipsam, sapiente suscipit dicta eius velit amet aspernatur
-                asperiores modi quidem expedita fugit.
-                </p>
-            </div>
+            {
+                experience.map((item, index) => (
+                    <div key={index}>
+                    <h3 className="text-dark">{item.company}</h3>
+                    <p>
+                    <Moment format='YYYY/MM/DD'>{item.from}</Moment> - { 
+                        item.to === null ? (' Current') : <Moment format='YYYY/MM/DD'>{item.to}</Moment>
+                    }                         
+                    </p>
+                    <p><strong>Position: </strong>{item.title}</p>
+                    <p>
+                    <strong>Description: </strong>{item.description}
+                    </p>
+                </div>
+                ))
+            }
             </div>
         </Fragment>
     )
