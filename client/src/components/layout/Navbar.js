@@ -19,6 +19,11 @@ const Navbar = (props) => {
             </Link>
         </li>
         <li>
+          <Link to="/posts">
+            Posts
+          </Link>
+        </li>            
+        <li>
           <a onClick={props.logout} href="#!">
             <i className="fas fa-sign-out"></i>{ ' ' }
             <span className="hide-sm">Logout</span>
