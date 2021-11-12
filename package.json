@@ -19,6 +19,7 @@
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.7",
+    "morgan": "^1.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "request": "^2.88.2",
