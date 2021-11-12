@@ -31,7 +31,6 @@ export default function (state = initialState, action) {
             return {
                 ...state, 
                 post: payload,
-                posts: null,
                 loading: false
             }            
         case POST_ERROR:
